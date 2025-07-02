@@ -1,0 +1,113 @@
+﻿N°;Conjunto;Variable;Descripción;Lectura;Tipo;Uso;Explicación;Imputacion;Defecto
+1;Tronaduras;N° Disparo;Número secuencial del disparo realizado.;Si;integer;No;Es un identificador y no aporta información predictiva sobre Mo o energía.;drop;
+2;Tronaduras;Fecha;Fecha en que se realizó el disparo.;Si;datetime;No;Variable temporal que sirve para relacionar las tronaduras con los datos de sismicidad.  Aunque puede extraerse información secundaria, no impacta directamente la sismicidad.;datetime;01-01-1900
+3;Tronaduras;Hora;Hora en que se realizó el disparo.;Si;datetime;No;Similar a “Fecha”, es información temporal con relevancia marginal para la predicción directa.;constant;0:00
+4;Tronaduras;PK;Posición kilométrica del disparo en la mina.;Si;float;Sí;Puede reflejar variaciones geológicas en el macizo que influyen en la sismicidad.;median;
+5;Tronaduras;Cobertura Total;Área total afectada por la tronadura.;Si;float;Sí;Relacionada con la extensión del efecto explosivo y, por ende, con la energía liberada.;median;
+6;Tronaduras;Cobertura Primario;Área principal impactada por la explosión.;Si;float;Sí;Indica la concentración del efecto explosivo, lo cual puede influir en la distribución de la energía.;median;
+7;Tronaduras;Tronadura_Largo de Perforación (m);Longitud total de perforación para la tronadura, en metros.;Si;float;Sí;A mayor longitud, mayor volumen de roca fragmentada y, por tanto, mayor energía liberada.;median;
+8;Tronaduras;Tronadura_N° Tiros;Número de tiros planeados en la tronadura.;Si;integer;Sí;Influye en la distribución de explosivos y en la liberación de energía.;median;
+9;Tronaduras;Tronadura_N° Tiros Real;Número real de tiros ejecutados en la tronadura.;Si;integer;Sí;Las diferencias respecto al plan pueden afectar la cantidad de energía liberada.;median;
+10;Tronaduras;Tronadura_Kg. de explosivos tronadura;Cantidad de explosivos utilizados (kg) en la tronadura.;Si;float;Sí;Directamente proporcional a la energía liberada en la explosión.;median;
+11;Tronaduras;Tronadura_Tipo Explosivo;Tipo de explosivo empleado en la tronadura.;Si;categorical;Sí;El tipo de explosivo determina características de detonación que afectan Mo y la energía liberada.;mode;
+12;Tronaduras;Destressing_Se realizó;Indica si se ejecutó tronadura de destressing (Sí/No).;Si;categorical;Sí;La realización de destressing modifica el método de tronadura y puede alterar la respuesta sísmica.;constant;No
+13;Tronaduras;Destressing_N° Tiros;Número de tiros en la tronadura de destressing.;Si;integer;Sí;Afecta la distribución de explosivos en destressing y, por ende, la energía liberada.;median;
+14;Tronaduras;Destressing_Kg. de explosivos;Cantidad de explosivos usados en destressing.;Si;float;Sí;Influye en la magnitud de la energía liberada en operaciones de destressing.;median;
+15;Tronaduras;Destressing_Tipo Explosivo;Tipo de explosivo utilizado en destressing.;Si;categorical;Sí;Las características del explosivo empleadas en destressing afectan la respuesta sísmica.;mode;
+16;Tronaduras;Auscultacion_Desde (m);Punto inicial (en metros) de la auscultación realizada.;No;string;No;Es un dato de ubicación para la medición, sin relación directa con Mo o energía liberada.;median;
+17;Tronaduras;Auscultacion_Hasta (m);Punto final (en metros) de la auscultación.;No;string;No;Delimita la zona de auscultación, sin aportar directamente a la predicción.;median;
+18;Tronaduras;Auscultacion_Observación;Observaciones realizadas durante la auscultación.;No;string;No;Campo de texto libre, difícil de incorporar sin procesamiento NLP.;constant;Sin observaciones
+19;Tronaduras;Sondajes_Desde (m);Distancia inicial de los sondajes, en metros.;No;string;No;Dato de ubicación sin impacto directo en la energía liberada.;median;
+20;Tronaduras;Sondajes_Hasta (m);Distancia final de los sondajes, en metros.;No;string;No;Delimitación geográfica que no influye directamente en la predicción.;median;
+21;Tronaduras;Sondajes_Estructura;Información sobre la estructura identificada en los sondajes.;No;string;Sí;Aporta datos geológicos relevantes para la propagación de la energía sísmica.;mode;
+22;Tronaduras;Geotecnicas_UCS (MPa);Resistencia a la compresión uniaxial del material (MPa).;Si;integer;Sí;Parámetro clave que determina cómo se comporta la roca ante la explosión.;median;
+23;Tronaduras;Geotecnicas_Modulo de Young (GPa);Módulo de elasticidad del material, en GPa.;Si;integer;Sí;Indica la rigidez del material, importante para la respuesta frente a cargas explosivas.;median;
+24;Tronaduras;Geotecnicas_Razón Poisson;Relación de Poisson del material.;Si;float;Sí;Influye en la propagación de tensiones y deformaciones en la roca.;median;
+25;Tronaduras;Litología;Tipo de roca o material presente en la zona de tronadura.;Si;categorical;Sí;La litología condiciona las propiedades mecánicas y la respuesta a la explosión.;mode;
+26;Tronaduras;Fallas_Presencia;Indica la presencia de fallas en la zona.;Si;categorical;Sí;Las fallas pueden facilitar la propagación de ondas sísmicas.;mode;
+27;Tronaduras;Fallas_Sub-Paralelas;Indica la presencia de fallas sub-paralelas.;Si;categorical;Sí;Afecta la dirección y magnitud de la respuesta sísmica.;mode;
+28;Tronaduras;Estructura;Información sobre la estructura geológica del macizo.;Si;categorical;Sí;La configuración estructural influye en la distribución de la energía liberada.;mode;
+29;Tronaduras;Estructura Crítica;Indica la presencia de estructuras críticas en la zona.;Si;categorical;Sí;La presencia de zonas críticas puede amplificar la respuesta sísmica.;mode;
+30;Tronaduras;Condición de Agua;Estado de humedad del material (seco, mojado, etc.).;Si;categorical;Sí;La humedad afecta la fracturabilidad y la propagación de las ondas sísmicas.;constant;Seco
+31;Tronaduras;GSI_Puntaje;Puntaje del Índice Geológico y Estructural (GSI).;Si;string;Sí;Proporciona una medida integradora de la calidad y estabilidad del macizo rocoso.;median;
+32;Tronaduras;GSI_Blocosidad;Evaluación de la blocosidad del material según GSI.;Si;categorical;Sí;Relaciona la fragmentación del macizo con la energía liberada.;median;
+33;Tronaduras;GSI_Condición Estructuras;Condición de las estructuras presentes según GSI.;Si;categorical;Sí;Refleja la integridad estructural del macizo, fundamental para la propagación de la energía.;mode;
+34;Tronaduras;DTM;Modelo Digital del Terreno.;Si;integer;Sí;Proporciona contexto topográfico que puede relacionarse con las condiciones geotécnicas.;median;
+35;Tronaduras;Blocosidad_Volumen Total;Volumen total evaluado para la determinación de la blocosidad.;Si;float;Sí;El volumen fragmentado influye en la cantidad de energía liberada.;median;
+36;Tronaduras;Blocosidad_N° Caras;Número de caras evaluadas en la medición de blocosidad.;Si;integer;Sí;Indica la complejidad geométrica de la fragmentación.;median;
+37;Tronaduras;Blocosidad_Sumatoria Superficie;Suma total de las superficies evaluadas en la blocosidad.;Si;float;Sí;Puede correlacionarse con la extensión de la zona afectada por la explosión.;median;
+38;Tronaduras;Blocosidad_Índice Blocosidad;Índice cuantitativo de blocosidad del macizo.;Si;float;Sí;Mide de forma integrada la fragmentación del material, lo que incide en la liberación de energía.;median;
+39;Tronaduras;Blocosidad_Observaciones;Observaciones adicionales sobre la blocosidad.;Si;string;No;Texto libre que requiere procesamiento adicional para ser aprovechado en el modelo.;constant;Sin observaciones
+40;Tronaduras;Avance_Largo real (m);Largo real medido del avance en la excavación, en metros.;Si;float;Sí;Relaciona el progreso de la excavación con la cantidad de roca fragmentada y la energía liberada.;median;
+41;Tronaduras;Avance_Tipo de Explosivo;Tipo de explosivo utilizado en el avance.;Si;categorical;Sí;Afecta la eficacia de la tronadura y la energía liberada durante el avance.;mode;
+42;Tronaduras;Avance_Tipo Fortificación;Tipo de fortificación aplicada en el avance.;Si;categorical;No;Está más relacionada con medidas de seguridad que con la liberación de energía.;mode;
+43;Tronaduras;Avance_Tipo de acero perno hreicoidal;Tipo de acero usado en pernos helicoidales durante el avance.;Si;categorical;No;Es información de refuerzo, sin influencia directa en el comportamiento sísmico.;mode;
+44;Tronaduras;Avance_Equipo Mecanizado;Tipo de equipo mecanizado empleado en el avance.;Si;categorical;No;Dato operativo sin relación directa con el Mo o la energía acumulada.;mode;
+45;Tronaduras;Sobre-excavacion_A (Caja Norte);Medida de sobre-excavación en la zona A (Caja Norte).;Si;float;Sí;Puede influir en la distribución de la energía liberada en la tronadura.;median;
+46;Tronaduras;Sobre-excavacion_B (Acod. Norte);Medida de sobre-excavación en la zona B (Acod. Norte).;Si;float;Sí;Afecta las condiciones de tronadura y, por tanto, la energía liberada.;median;
+47;Tronaduras;Sobre-excavacion_C (Techo);Medida de sobre-excavación en la zona C (Techo).;Si;float;Sí;Incide en el comportamiento de la zona superior de la excavación ante la explosión.;median;
+48;Tronaduras;Sobre-excavacion_D (Acod. Sur);Medida de sobre-excavación en la zona D (Acod. Sur).;Si;float;Sí;Impacta la dinámica de la tronadura en esa área, relacionándose con la liberación de energía.;median;
+49;Tronaduras;Sobre-excavacion_E (Caja Sur);Medida de sobre-excavación en la zona E (Caja Sur).;Si;float;Sí;Afecta la distribución del efecto explosivo en la parte sur de la excavación.;median;
+50;Tronaduras;Sobre-excavacion_% Sobre-Excavación;Porcentaje de sobre-excavación realizado respecto a lo planificado.;Si;float;Sí;Indica desviaciones en la ejecución que pueden modificar la energía liberada.;median;
+51;Tronaduras;A (Caja Norte);Parámetro dimensional de la zona A (Caja Norte).;Si;integer;Sí;Valor numérico que aporta información geométrica de la excavación.;median;
+52;Tronaduras;B (Acod. Norte);Parámetro dimensional de la zona B (Acod. Norte).;Si;integer;Sí;Proporciona datos geométricos relevantes para caracterizar la tronadura.;median;
+53;Tronaduras;C (Techo);Parámetro dimensional de la zona C (Techo).;Si;integer;Sí;Indica dimensiones críticas que afectan la distribución del efecto explosivo.;median;
+54;Tronaduras;D (Acod. Sur);Parámetro dimensional de la zona D (Acod. Sur).;Si;integer;Sí;Contribuye a la caracterización de la geometría de la excavación y la liberación de energía.;median;
+55;Tronaduras;E (Caja Sur);Parámetro dimensional de la zona E (Caja Sur).;Si;integer;Sí;Complementa la información geométrica del frente de excavación.;median;
+56;Tronaduras;Total;Valor total (posible suma o agregado de parámetros).;Si;integer;Sí;Agrega información cuantitativa que puede correlacionarse con el Mo y la energía liberada.;median;
+57;Tronaduras;Medias Cañas Diseño;Diseño o configuración de medias cañas en la excavación.;Si;string;No;Información de diseño de fortificación, sin impacto directo en la liberación de energía.;constant;No definido
+58;Tronaduras;% Medias Cañas;Porcentaje de implementación de medias cañas en el diseño.;Si;float;No;Indicador de refuerzo o diseño, no predictivo para Mo o energía.;median;
+59;Tronaduras;Observaciones;Observaciones generales sobre la tronadura.;Si;string;No;Campo de texto libre que requiere procesamiento adicional para ser utilizado.;constant;Sin observaciones
+60;Tronaduras;Sismicidad_Alta;Indicador de sismicidad alta.;No;categorical;No;Variable resultado que clasifica la sismicidad, no se usa como predictor.;mode;
+61;Tronaduras;Sismicidad_Media;Indicador de sismicidad media.;No;categorical;No;Resultado observado, no aporta como dato de entrada al modelo.;mode;
+62;Tronaduras;Sismicidad_Baja;Indicador de sismicidad baja.;No;categorical;No;Similar a las anteriores, es un descriptor de resultado y no predictor.;mode;
+63;Tronaduras;Sismicidad_N° Eventos en ciclo;Número de eventos sísmicos registrados durante el ciclo.;Si;integer;No;Métrica de resultado de la sismicidad, no se utiliza como variable predictiva.;median;
+64;Tronaduras;Sismicidad_N° Eventos >0.0;Número de eventos con magnitud >0.0.;Si;integer;No;Indicador de la cantidad de eventos, correspondiente al resultado, no a la entrada del modelo.;median;
+65;Tronaduras;Sismicidad_N° Eventos >0.3;Número de eventos con magnitud >0.3.;Si;integer;No;Variable de resultado que no se utiliza como predictor directo.;median;
+66;Tronaduras;Sismicidad_Mag Max;Magnitud máxima registrada en la sismicidad.;Si;float;No;Resultado de la tronadura, por lo que no se usa como variable de entrada.;median;
+67;Tronaduras;Sismicidad_N° Eventos >0.7;Número de eventos con magnitud >0.7.;Si;integer;No;Indicador de eventos extremos, se considera variable resultado.;median;
+68;Tronaduras;Sismicidad_Observación;Observaciones relacionadas con la sismicidad.;Si;string;No;Campo de texto libre, de difícil incorporación sin procesamiento adicional.;constant;Sin observaciones
+69;Tronaduras;Sismicidad_Tiempo Aislación Telecomandoi(h);Tiempo de aislamiento mediante telecomando, en horas.;Si;integer;No;Variable de procedimiento operativo sin impacto directo en la energía liberada.;median;
+70;Tronaduras;Sismicidad_Tiempo Aislación Personal (h);Tiempo de aislamiento para personal, en horas.;Si;integer;No;Relacionado con protocolos de seguridad, no se utiliza para predecir Mo o energía.;median;
+71;Tronaduras;Sismicidad_Tiempo Post Marina( h);Tiempo post-marina tras la sismicidad, en horas.;Si;integer;No;Variable operativa que no incide directamente en la energía liberada.;median;
+72;Tronaduras;Sismicidad_Tiempo Post Acuñadura (h);Tiempo post-acuñadura tras la sismicidad, en horas.;Si;integer;No;Indicador de protocolo post-tronadura, sin influencia directa en la predicción.;median;
+73;Tronaduras;Sismicidad_Tiempo aislación interf. Geotécnicas (h);Tiempo de aislamiento por interferencias geotécnicas, en horas.;Si;float;No;Se trata de una medida operativa, no predictiva del Mo o la energía acumulada.;median;
+74;Tronaduras;Convergencias_Supera límites (Intervensión);Indicador de si las convergencias superan los límites de intervención.;No;string;No;Variable de alerta operativa, sin relevancia directa en la predicción de la energía liberada.;mode;
+75;Tronaduras;Convergencias_Supera límites (Alerta);Indicador de alerta por convergencias que superan límites.;No;string;No;Relacionada con protocolos de seguridad, no aporta información predictiva.;mode;
+76;Tronaduras;Convergencias_No supera límites;Indicador de que las convergencias están dentro de los límites establecidos.;No;string;No;No influye en la estimación de la energía liberada.;mode;
+77;Tronaduras;Saneamiento_Tipo;Tipo de saneamiento aplicado tras la tronadura.;Si;categorical;No;Variable de proceso post-tronadura, sin impacto directo sobre Mo o energía acumulada.;mode;
+78;Tronaduras;Saneamiento_Observación;Observaciones relacionadas con el saneamiento.;Si;string;No;Texto libre, de uso cualitativo y difícil de cuantificar sin procesamiento.;constant;Sin observaciones
+79;Tronaduras;Coordenadas_Norte (m);Coordenada norte del punto de tronadura, en metros.;Si;float;Sí;Proporciona la ubicación geográfica, lo que permite relacionarla con variaciones en condiciones geotécnicas.;median;
+80;Tronaduras;Coordenadas_Este (m);Coordenada este del punto de tronadura, en metros.;Si;float;Sí;Aporta contexto espacial que puede influir en las características del macizo.;median;
+81;Tronaduras;Coordenadas_Cota (m);Elevación o cota del punto de tronadura, en metros.;Si;float;Sí;La altitud puede incidir en las condiciones de la roca y en la propagación de la energía.;median;
+82;Tronaduras;Avance Topográfico (m);Avance medido topográficamente en metros.;Si;float;Sí;Indica el progreso de la excavación, lo que puede relacionarse con la cantidad de energía liberada.;median;
+83;Tronaduras;Metros Acumulado (m);Metraje acumulado de avance en la excavación, en metros.;Si;float;Sí;Refleja el volumen trabajado y se relaciona con la energía total liberada en el proceso.;median;
+84;Tronaduras;Área teórica(m2);Área teórica calculada de la excavación, en metros cuadrados.;Si;float;Sí;La dimensión teórica es relevante para estimar el volumen y, por ende, la energía liberada.;median;
+85;Tronaduras;% sobre-excavación;Porcentaje de sobre-excavación respecto al área teórica.;Si;float;Sí;Indica desviaciones en la ejecución que pueden modificar la distribución de la energía.;median;
+86;Tronaduras;Volumen excavado (m3);Volumen total excavado en la tronadura, en metros cúbicos.;Si;float;Sí;Directamente relacionado con la cantidad de roca fragmentada y la energía liberada.;median;
+87;Tronaduras;Tiempo de Ciclo Total (h);Tiempo total del ciclo de tronadura, en horas.;Si;float;Sí;Refleja la eficiencia del proceso, pudiendo correlacionarse con la energía liberada.;median;
+88;Tronaduras;Tiempo Ciclo Acumunado (h);Tiempo acumulado de ciclos de tronadura, en horas.;Si;float;Sí;Proporciona un contexto operacional acumulado, potencialmente relacionado con la energía total liberada.;median;
+89;Tronaduras;Ruidos y Crepitaciones (h);Tiempo dedicado a ruidos y crepitaciones, en horas.;Si;float;No;Indicador de condiciones operativas sin influencia directa en el Mo o la energía liberada.;median;
+90;Tronaduras;Protocolo Sísmico (h);Tiempo asignado al protocolo sísmico, en horas.;Si;float;No;Variable de monitoreo y seguridad, sin impacto directo sobre la energía liberada.;median;
+91;Tronaduras;Saneamiento (h);Tiempo dedicado al saneamiento, en horas.;Si;float;No;Pertenece a procedimientos post-tronadura y no incide en la liberación de energía.;median;
+92;Tronaduras;Evaluación Geomecánica (h);Tiempo dedicado a la evaluación geomecánica, en horas.;Si;float;No;Dato operativo que no afecta directamente la predicción del Mo o la energía acumulada.;median;
+93;Tronaduras;Sensores Sísmicos (h);Tiempo empleado en sensores sísmicos, en horas.;Si;float;No;Variable de monitoreo, sin relación directa con las variables predictoras de Mo o energía.;median;
+94;Tronaduras;Total Interferencias (h);Tiempo total de interferencias durante el ciclo, en horas.;Si;float;No;Dato operativo que no aporta información directa para predecir la energía liberada.;median;
+95;Tronaduras;% de Interferencias en el ciclo;Porcentaje de interferencias ocurridas durante el ciclo.;Si;float;No;Indicador de proceso, sin relevancia directa para la predicción del Mo o la energía acumulada.;median;
+96;Tronaduras;Tiempo ciclo sin interferencias Geotécnicas (h);Tiempo del ciclo sin interferencias geotécnicas, en horas.;Si;float;No;No aporta información directa sobre la liberación de energía ni sobre el momento sísmico.;median;
+97;Tronaduras;Tiempo Tronadura;Tiempo específico dedicado a la tronadura.;Si;float;Sí;Puede afectar la eficiencia de la explosión y, en consecuencia, la energía liberada.;median;
+98;Tronaduras;Tiempo total antes de acuñadura;Tiempo transcurrido antes de iniciar las acuñaduras, en horas.;Si;float;No;Variable operativa previa que no incide directamente en la liberación de energía.;median;
+99;Tronaduras;Tiempo Total antes del Shotcrete;Tiempo total antes de aplicar shotcrete, en horas.;Si;float;No;Relacionado con etapas de fortificación, sin impacto directo en Mo o energía acumulada.;median;
+100;Tronaduras;Repetido_Tiempo de Ciclo Total (h);Repetición del tiempo de ciclo total, en horas.;No;float;No;Variable redundante que se descarta para evitar duplicidad en el modelo.;median;
+101;Tronaduras;Tronadura;Información general descriptiva sobre la tronadura.;Si;float;No;Campo de texto libre, difícil de cuantificar sin procesamiento adicional.;constant;N/A
+102;Tronaduras;Marina;Información sobre aspectos marinos o presencia de agua (si aplica).;Si;float;No;Generalmente no se relaciona directamente con la energía liberada en la tronadura.;constant;N/A
+103;Tronaduras;Acuñadura;Información sobre las acuñaduras realizadas.;Si;float;No;Dato descriptivo del proceso sin influencia directa en la liberación de energía o el Mo.;constant;N/A
+104;Tronaduras;Fortificación;Información sobre las fortificaciones aplicadas en la excavación.;Si;float;No;Variable relacionada con medidas de seguridad y diseño, sin impacto directo en la predicción del momento sísmico o la energía acumulada.;constant;N/A
+105;Sismicidad;#EventDate;Fecha en la que ocurrió el evento sísmico.;Si;datetime;No;Esta variable temporal sirve para relacionar las tronaduras con los datos de sismicidad. Pero no interviene en el cálculo de los targets.;datetime;01-01-1900
+106;Sismicidad;EventTimeInDay;Hora del evento sísmico durante el día.;Si;datetime;No;Información temporal sin influencia directa en la determinación de Mo Total o Energía Liberada Total.;constant;0:00
+107;Sismicidad;LocX [m];Ubicación espacial respecto a la referencia X en metros.;Si;float;No;Aunque aporta contexto geográfico, no se utiliza para calcular los targets.;median;
+108;Sismicidad;LocY [m];Ubicación espacial respecto a la referencia Y en metros.;Si;float;No;Variable espacial que no se emplea para el cálculo de los targets.;median;
+109;Sismicidad;LocZ [m];Ubicación espacial respecto a la referencia Z en metros.;Si;float;No;Proporciona la posición vertical, pero no se usa para derivar los targets definidos.;median;
+110;Sismicidad;Local Magnitude;Magnitud local del evento sísmico.;Si;float;Si;Se utiliza para calcular la variable target Mo Total.;median;
+111;Sismicidad;Energy [J];Energía liberada durante el evento, expresada en joules.;Si;float;Si;Se utiliza para calcular la variable target Energía Liberada Total.;median;
+112;Sismicidad;EnergyS/EnergyP;Relación entre la energía de las ondas S y las ondas P.;Si;float;No;Proporciona información sobre la propagación de energía, pero no interviene en el cálculo directo de los targets.;median;
